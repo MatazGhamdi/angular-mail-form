@@ -14,10 +14,12 @@ import {MatCardModule} from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { SentEmailComponent } from './mail-form/sent-email/sent-email.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MailFormComponent
+    MailFormComponent,
+    SentEmailComponent
   ],
   imports: [
     BrowserModule,
