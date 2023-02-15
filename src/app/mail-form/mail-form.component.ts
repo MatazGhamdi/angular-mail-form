@@ -4,6 +4,7 @@ import { FormArray } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgModel } from '@angular/forms';
+import { SentEmailComponent } from './sent-email/sent-email.component';
 @Component({
   selector: 'app-mail-form',
   templateUrl: './mail-form.component.html',
@@ -51,8 +52,16 @@ export class MailFormComponent {
   submitForm() {
     // Handle form submission
     if (this.mailForm.valid) {
+      
       this.toRecipients.value.unshift(this.mailForm.value.requiredToRecipient);
-      console.log(this.mailForm.value);
+
+      const data = this.mailForm.value;
+
+      const dialogRef = this.dialog.open(SentEmailComponent, {
+        data: data,
+        width: "80%"
+      });
+
       this.snackbar.open('Email sent!', '😋', { duration: 10000 });
     } else {
       this.snackbar.open('At least one TO recipient must be added.', 'close', { duration: 5000 });

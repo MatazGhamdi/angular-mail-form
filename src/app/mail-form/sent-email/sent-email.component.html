@@ -1,0 +1,29 @@
+<div class="container">
+
+    <div>
+        <label style="font-weight: bold;">To: </label>
+
+        <p style="display: inline; background: #eee; border: 1px solid black; border-radius: 3px; padding: 3px; margin-right: 3px;
+        margin-top: 3px;"
+            *ngFor="let toRecipient of data.toRecipients">
+            {{toRecipient}}
+        </p>
+    </div>
+
+    <div>
+        <label style="font-weight: bold;">Cc: </label>
+
+        <p style="display: inline; background: #eee; border: 1px solid black; border-radius: 3px; padding: 3px; margin-right: 3px;
+        margin-top: 3px;"
+            *ngFor="let ccRecipient of data.ccRecipients">
+            {{ccRecipient}}
+        </p>
+    </div>
+
+    <h4 style="margin-top: 3px;"><span style="font-weight: bold;">Subject: </span>{{data.subject}}</h4>
+
+    <div style="border: 1px solid #eee; border-radius: 5px; padding: 5px;">
+        <p>{{data.body}}</p>
+    </div>
+
+</div>
