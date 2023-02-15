@@ -1,0 +1,21 @@
+
+    .mail-form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .form-field {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }

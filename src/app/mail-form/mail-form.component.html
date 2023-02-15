@@ -1,0 +1,81 @@
+<fieldset style="width: 70%; margin: auto">
+    <form [formGroup]="mailForm" class="mail-form">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+        <div style="width: 49%;">
+            <label>TO:</label>
+            <div>
+
+          <mat-form-field appearance="outline" floatLabel="always" class="form-field">
+            <label>To: <span style="color: red">*</span></label>
+            <input
+              matInput
+              formControlName="requiredToRecipient"
+              required
+              placeholder="example@example.com"
+            />
+          </mat-form-field>
+        </div>
+  
+          <div
+            *ngFor="let recipient of toRecipients.controls; let i = index"
+            style="width: 100%; display: flex;"
+            formArrayName="toRecipients"
+          >
+            <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;">
+              <input matInput formControlName="{{ i }}" placeholder="To" />
+            </mat-form-field>
+            <div style="display: flex; align-items: center;">
+              <button mat-button color="warn" (click)="removeRecipient(i, 'toRecipients')">
+                X
+              </button>
+              <button mat-button color="primary" (click)="addRecipient('toRecipients')">
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <div style="width: 49%;">
+            <label>Cc:</label>
+            <div
+              *ngFor="let recipient of ccRecipients.controls; let i = index"
+              style="width: 100%; display: flex;"
+              formArrayName="ccRecipients"
+            >
+              <mat-form-field
+                appearance="outline"
+                floatLabel="always"
+                style="width: 100%"
+              >
+              <label>Cc</label>
+                <input matInput formControlName="{{ i }}" placeholder="ccEmail@email.com" />
+              </mat-form-field>
+              <div style="display: flex; align-items: center;">
+                <button mat-button color="warn" *ngIf="i > 0" (click)="removeRecipient(i, 'ccRecipients')">
+                  X
+                </button>
+                <button mat-button color="primary" (click)="addRecipient('ccRecipients')">
+                  +
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+  
+      <mat-form-field appearance="outline" floatLabel="always" class="form-field">
+        <input matInput formControlName="subject" placeholder="Subject" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" floatLabel="always" class="form-field">
+        <textarea matInput formControlName="body" placeholder="Email Body"></textarea>
+      </mat-form-field>
+  
+      <input type="file" formControlName="emailAttachments" multiple />
+      <input type="file" formControlName="inlineAttachments" multiple />
+  
+      <div class="button-row">
+        <button mat-raised-button color="primary" (click)="submitForm()">Send</button>
+      </div>
+    </form>
+  </fieldset>
+  
